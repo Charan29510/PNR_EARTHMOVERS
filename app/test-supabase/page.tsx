@@ -1,28 +1,45 @@
+"use client";
+
+import { useState } from "react";
+import { createClient } from "@/lib/supabase/client";
+
 export default function TestSupabase() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  const supabase = createClient();
+
+  const [result, setResult] = useState("Not tested");
+
+  const testConnection = async () => {
+    setResult("Testing...");
+
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) {
+      setResult(`ERROR: ${error.message}`);
+      return;
+    }
+
+    setResult(
+      data.session
+        ? "Supabase connection works — session exists ✅"
+        : "Supabase connection works — no active session ✅"
+    );
+  };
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white p-10">
       <h1 className="text-3xl font-bold mb-6">
-        Supabase Configuration Test
+        Supabase Connection Test
       </h1>
 
-      <p>
-        URL loaded:{" "}
-        <strong>{url ? "YES ✅" : "NO ❌"}</strong>
-      </p>
+      <button
+        onClick={testConnection}
+        className="bg-red-600 px-6 py-3 rounded-lg font-bold"
+      >
+        Test Supabase Connection
+      </button>
 
-      <p className="mt-3">
-        Key loaded:{" "}
-        <strong>{key ? "YES ✅" : "NO ❌"}</strong>
-      </p>
-
-      <p className="mt-3">
-        URL format:{" "}
-        <strong>
-          {url?.startsWith("https://") ? "VALID ✅" : "INVALID ❌"}
-        </strong>
+      <p className="mt-6 text-lg">
+        Result: <strong>{result}</strong>
       </p>
     </main>
   );

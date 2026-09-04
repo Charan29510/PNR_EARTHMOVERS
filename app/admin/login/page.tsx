@@ -24,11 +24,12 @@ export default function AdminLogin() {
       password,
     });
 
-    if (error) {
-      setError("Invalid email or password.");
-      setLoading(false);
-      return;
-    }
+   if (error) {
+  console.error("LOGIN ERROR:", error);
+  setError(error.message);
+  setLoading(false);
+  return;
+}
 
     router.push("/admin/dashboard");
   };

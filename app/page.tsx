@@ -13,73 +13,87 @@ export default function Home() {
   const [showCallOptions, setShowCallOptions] = useState(false);
   return (
     <main className="min-h-screen bg-white text-zinc-900">
+{/* Navbar */}
+<nav className="relative grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] items-center px-6 py-5 md:px-12 lg:px-20 border-b border-zinc-200">
 
-      {/* Navbar */}
-<nav className="relative flex items-center justify-between px-6 py-5 md:px-12 lg:px-20 border-b border-zinc-200">
-  
-  {/* Logo */}
+  {/* Logo + Company Name */}
   <div className="flex items-center gap-3">
-  <Image
-  src="/images/pnr-logo.png"
-  alt="PNR Earthmovers"
-  width={120}
-  height={120}
-  className="h-24 w-24 object-contain"
-/>
+    <Image
+      src="/images/pnr-logo.png"
+      alt="PNR Earthmovers"
+      width={120}
+      height={120}
+      className="h-24 w-24 object-contain"
+    />
 
-  <div>
-    <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
-<span className="text-red-600">EARTHMOVERS</span>
-    </h1>
+    <div>
+      <h1 className="text-2xl md:text-3xl font-bold tracking-tight">
+        PNR <span className="text-red-600">EARTHMOVERS</span>
+      </h1>
 
-    <p className="text-xs text-zinc-500">
-      Earthmoving & Equipment Services
+      <p className="text-xs text-zinc-500">
+        Earthmoving & Equipment Services
+      </p>
+    </div>
+  </div>
+
+  {/* Owner Name - Center */}
+  <div className="hidden md:block text-center px-6">
+    <p className="text-sm md:text-base font-semibold text-zinc-700 whitespace-nowrap">
+      PANDIRIPALLI NAGARAJU
     </p>
   </div>
-</div>
-  {/* Desktop Navigation */}
-  <div className="hidden md:flex items-center gap-8 text-sm font-medium">
-    <a href="#" className="hover:text-yellow-600 transition">
-      Home
-    </a>
 
-    <a href="#services" className="hover:text-yellow-600 transition">
-      Services
-    </a>
+  {/* Right Side */}
+  <div className="hidden md:flex items-center justify-end gap-8">
 
-    <a href="#equipment" className="hover:text-yellow-600 transition">
-      Equipment
-    </a>
+    {/* Desktop Navigation */}
+    <div className="flex items-center gap-8 text-sm font-medium">
 
-    <a href="#about" className="hover:text-yellow-600 transition">
-      About
-    </a>
+      <a href="#" className="hover:text-yellow-600 transition">
+        Home
+      </a>
 
-    <a href="#contact" className="hover:text-yellow-600 transition">
-      Contact
-    </a>
+      <a href="#services" className="hover:text-yellow-600 transition">
+        Services
+      </a>
+
+      <a href="#equipment" className="hover:text-yellow-600 transition">
+        Equipment
+      </a>
+
+      <a href="#about" className="hover:text-yellow-600 transition">
+        About
+      </a>
+
+      <a href="#contact" className="hover:text-yellow-600 transition">
+        Contact
+      </a>
+
+    </div>
+
+    {/* Desktop Request Button */}
+    <button
+      onClick={() => setShowRequestOptions(true)}
+      className="bg-yellow-500 hover:bg-yellow-400 px-5 py-3 rounded-lg font-semibold transition"
+    >
+      Request a Machine
+    </button>
+
   </div>
-
-  {/* Desktop Request Button */}
-  <button
-    onClick={() => setShowRequestOptions(true)}
-    className="hidden md:block bg-yellow-500 hover:bg-yellow-400 px-5 py-3 rounded-lg font-semibold transition"
-  >
-    Request a Machine
-  </button>
 
   {/* Mobile Menu Button */}
   <button
-  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-  className="md:hidden text-2xl font-bold p-2"
->
-  {mobileMenuOpen ? "✕" : "☰"}
-</button>
+    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+    className="md:hidden absolute right-6 top-1/2 -translate-y-1/2 text-2xl font-bold p-2"
+  >
+    {mobileMenuOpen ? "✕" : "☰"}
+  </button>
 
   {/* Mobile Menu */}
   {mobileMenuOpen && (
     <div className="absolute top-full left-0 right-0 z-50 bg-white border-b border-zinc-200 shadow-lg md:hidden">
-      
+
       <div className="flex flex-col px-6 py-4 text-sm font-medium">
 
         <a
@@ -135,6 +149,7 @@ export default function Home() {
       </div>
     </div>
   )}
+
 </nav>
 
       {/* Hero Section */}
@@ -236,34 +251,47 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
             <ServiceCard
-              title="Excavation"
-              description="Excavation and digging work for construction and other projects."
-            />
+  title="Excavation"
+  description="Excavation and digging work for construction and other projects."
+  image="/images/excavation.png"
+   icon="/images/excavation-1.png"
+/>
 
             <ServiceCard
               title="Earthwork"
               description="Earthmoving and site preparation for various requirements."
+              image="/images/earthwork.png"
+               icon="/images/earthwork-1.png"
             />
 
             <ServiceCard
-              title="Land Leveling"
-              description="Land preparation and leveling for agricultural and construction purposes."
-            />
+  title="Land Leveling"
+  description="Land preparation and leveling for agricultural and construction purposes."
+  image="/images/leveling.png"
+  icon="/images/leveling-1.png"
+/>
 
             <ServiceCard
-              title="Mud & Material Loading"
-              description="Loading and shifting earth, mud and other materials."
-            />
+  title="Mud & Material Loading"
+  description="Loading and shifting earth, mud and other materials."
+  image="/images/loading.png"
+   icon="/images/loading-1.png"
+/>
 
             <ServiceCard
               title="Industrial Work"
               description="Machinery support for industrial and infrastructure projects."
+              image="/images/industrial.png"
+              icon="/images/industrial-1.png"
             />
 
             <ServiceCard
               title="Agricultural Work"
               description="Earthmoving solutions for farms and agricultural land."
+              image="/images/agricultural.png"
+              icon="/images/agricultural-1.png"
             />
+            
 
           </div>
 
@@ -846,34 +874,66 @@ setRequestSubmitted(true);
   );
 }
 
-
 /* Service Card */
 function ServiceCard({
   title,
   description,
+  image,
+  icon,
 }: {
   title: string;
   description: string;
+  image?: string;
+  icon?: string;
 }) {
   return (
-    <div className="border border-zinc-200 rounded-xl p-7 hover:border-yellow-400 hover:shadow-lg transition">
+    <div
+      className="relative min-h-[280px] overflow-hidden border border-zinc-200 rounded-xl p-7 hover:border-yellow-400 hover:shadow-lg transition"
+      style={
+        image
+          ? {
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }
+          : undefined
+      }
+    >
 
-      <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-5">
-        🚜
+      {/* Overlay for readability */}
+      {image && (
+        <div className="absolute inset-0 bg-white/75" />
+      )}
+
+      {/* Content */}
+      <div className="relative z-10">
+
+        {/* Service Icon */}
+        <div className="w-16 h-16 bg-yellow-100 rounded-lg flex items-center justify-center mb-5 overflow-hidden">
+          {icon ? (
+            <img
+              src={icon}
+              alt={`${title} icon`}
+              className="w-full h-full object-contain"
+            />
+          ) : (
+            <span className="text-2xl">🚜</span>
+          )}
+        </div>
+
+        <h3 className="text-xl font-bold">
+          {title}
+        </h3>
+
+        <p className="text-zinc-600 mt-3 leading-7">
+          {description}
+        </p>
+
       </div>
-
-      <h3 className="text-xl font-bold">
-        {title}
-      </h3>
-
-      <p className="text-zinc-600 mt-3 leading-7">
-        {description}
-      </p>
 
     </div>
   );
 }
-
 
 /* Equipment Card */
 function EquipmentCard({
